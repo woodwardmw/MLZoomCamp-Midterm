@@ -82,7 +82,7 @@ response = requests.post(url, json=example)
 result = response.json()
 result
 ```
-Or if you haven't imported the database, and want to just run one example, here is one to run:
+Or if you haven't imported the data, and want to just run one example, here is one to run:
 ```
 example = {'sex': {967: 1},
  'f0': {967: -3.325},
