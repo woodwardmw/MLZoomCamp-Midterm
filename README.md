@@ -11,5 +11,74 @@ The data I used came from [here](http://archive.ics.uci.edu/ml/machine-learning-
 ## Running the Project
 The analysis, model selection and hyperparameters tuning are contained in the [jupyter notebook](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Mid-term%20Vowel%20Prediction%20Project.ipynb).
 
-The final model is exported to [vowel-model.bin](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/vowel-model.bin)
+The final model is exported to [vowel-model.bin](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/vowel-model.bin).
 
+The script to deploy the model using flask is contained in [predict_vowel.py](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/predict_vowel.py).
+
+[Pipfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Pipfile) and [Pipfile.lock](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Pipfile.lock) set up the pipenv environment. These can be called by Docker.
+
+[Dockerfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Dockerfile) contains the Docker instructions. There are two lines commented out, which should be uncommented if used for local deployment on port 9696. Currently it is set for remote deployment on Heroku, and so no port is set.
+
+### Local deployment
+To deploy locally, uncomment the following two lines of [Dockerfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Dockerfile):
+```
+#EXPOSE 9696  #(For local deployment)
+
+#ENTRYPOINT [ "gunicorn", "--bind=0.0.0.0:9696", "predict_vowel:app" ]  #(For local deployment)
+```
+and comment out:
+```
+ENTRYPOINT [ "gunicorn", "predict_vowel:app" ]
+```
+In [predict_vowel.py](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/predict_vowel.py) change the variable
+```
+DEPLOY
+```
+to something other than 'heroku'.
+
+To build, from this directory run: 
+
+```
+sudo docker build -t zoomcamp-midterm .
+```
+
+To run:
+
+```
+sudo docker run -it --rm -p 9696:9696 zoomcamp-midterm:latest
+```
+### Remote deployment on Heroku
+To deploy on Heroku, comment out the following two lines of [Dockerfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Dockerfile):
+```
+#EXPOSE 9696  #(For local deployment)
+
+#ENTRYPOINT [ "gunicorn", "--bind=0.0.0.0:9696", "predict_vowel:app" ]  #(For local deployment)
+```
+and uncomment:
+```
+ENTRYPOINT [ "gunicorn", "predict_vowel:app" ]
+```
+In [predict_vowel.py](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/predict_vowel.py) change the variable DEPLOY to equal 'heroku':
+```
+DEPLOY = 'heroku'
+```
+Then
+```
+git push heroku main
+```
+will build the Docker file and push it up to Heroku.
+
+## Accessing the Heroku app
+The deployed app can be accessed on Heroku at [https://zoomcamp-midterm-heroku.herokuapp.com/predict](https://zoomcamp-midterm-heroku.herokuapp.com/predict) with a test page at [https://zoomcamp-midterm-heroku.herokuapp.com/welcome](https://zoomcamp-midterm-heroku.herokuapp.com/welcome).
+
+The [jupyter notebook](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Mid-term%20Vowel%20Prediction%20Project.ipynb) contains the following code to send a POST request for one particular randomly chosen example to the Heroku app and receive a response:
+```
+example = df_test.drop(['speaker', 'vowel'], axis=1).iloc[[random_index,]]
+example = example.to_dict()
+
+import requests
+url = 'https://zoomcamp-midterm-heroku.herokuapp.com/predict'
+response = requests.post(url, json=example)
+result = response.json()
+result
+```
