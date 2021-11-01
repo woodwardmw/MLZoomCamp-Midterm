@@ -82,7 +82,8 @@ response = requests.post(url, json=example)
 result = response.json()
 result
 ```
-Or if you haven't imported the data, and want to just run one example, here is one to run:
+## One simple example to verify the Heroku app is working
+If you haven't imported the data, and want to just run one example, here is one to run:
 ```
 example = {'sex': {967: 1},
  'f0': {967: -3.325},
