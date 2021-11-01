@@ -42,5 +42,5 @@ def convert_to_vowel(vowel_int):
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port) 
+    port = int(os.environ.get("PORT", 5000))  # For deployment to Heroku
+    app.run(host='0.0.0.0', port=port)  # When deployed locally, used port 9696
