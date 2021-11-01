@@ -95,8 +95,6 @@ example = {'sex': {967: 1},
  'f7': {967: 0.135},
  'f8': {967: -1.388},
  'f9': {967: 0.746}}
- 
- example = example.to_dict()
 
 import requests
 url = 'https://zoomcamp-midterm-heroku.herokuapp.com/predict'
