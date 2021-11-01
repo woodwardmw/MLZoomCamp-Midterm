@@ -15,7 +15,10 @@ The final model is exported to [vowel-model.bin](https://github.com/woodwardmw/M
 
 The script to deploy the model using flask is contained in [predict_vowel.py](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/predict_vowel.py).
 
-[Pipfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Pipfile) and [Pipfile.lock](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Pipfile.lock) set up the pipenv environment. These can be called by Docker.
+[Pipfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Pipfile) and [Pipfile.lock](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Pipfile.lock) set up the pipenv environment. These can be called by Docker. The virtual environment can be activated by running
+```
+pipenv shell
+```
 
 [Dockerfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Dockerfile) contains the Docker instructions. There are two lines commented out, which should be uncommented if used for local deployment on port 9696. Currently it is set for remote deployment on Heroku, and so no port is set.
 
