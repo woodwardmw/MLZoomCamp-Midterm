@@ -9,7 +9,7 @@ The data consists of 15 speakers each pronouncing 11 vowels, six times each. The
 The data I used came from [here](http://archive.ics.uci.edu/ml/machine-learning-databases/undocumented/connectionist-bench/vowel/vowel-context.data).
 
 ## Running the Project
-The analysis, model selection and hyperparameters tuning are contained in the [jupyter notebook](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Mid-term%20Vowel%20Prediction%20Project.ipynb).
+The analysis, model selection and hyperparameters tuning are contained in the [jupyter notebook](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Mid-term%20Vowel%20Prediction%20Project.ipynb). These scripts are cleaned up as a python file here: [Mid-term Vowel Prediction Project.py](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Mid-term%20Vowel%20Prediction%20Project.py)
 
 The final model is exported to [vowel-model.bin](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/vowel-model.bin).
 
