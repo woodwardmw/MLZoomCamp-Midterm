@@ -82,3 +82,24 @@ response = requests.post(url, json=example)
 result = response.json()
 result
 ```
+## One simple example to verify the Heroku app is working
+If you haven't imported the data, and want to just run one example, here is one to run:
+```
+example = {'sex': {967: 1},
+ 'f0': {967: -3.325},
+ 'f1': {967: 2.141},
+ 'f2': {967: -0.528},
+ 'f3': {967: 0.439},
+ 'f4': {967: 0.099},
+ 'f5': {967: 0.321},
+ 'f6': {967: 0.217},
+ 'f7': {967: 0.135},
+ 'f8': {967: -1.388},
+ 'f9': {967: 0.746}}
+
+import requests
+url = 'https://zoomcamp-midterm-heroku.herokuapp.com/predict'
+response = requests.post(url, json=example)
+result = response.json()
+result
+```
