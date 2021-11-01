@@ -10,6 +10,11 @@ with open (model_file, 'rb') as f_in:
 
 app = Flask('vowel')
 
+@app.route('/welcome', methods=['GET'])
+def welcome():
+    welcome_msg = "<h1>Welcome to your application deployed as Docker container on heroku</h1>"
+    return welcome_msg
+
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.get_json()
