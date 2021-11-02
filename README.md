@@ -1,6 +1,6 @@
 # MLZoomCamp-Midterm
 ## Introduction
-In phonetics, it is generally known that the resonant frequencies of the vocal tract of the speaker can be used to determine the quality of the vowel being spoken. These resonant frequencies 
+In phonetics, it is generally known that the resonant frequencies of the vocal tract of the speaker can be used to determine the quality of the vowel being spoken.
 
 Here I have taken data of English speakers pronouncing eleven different vowels in their language. The data is taken from the [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Connectionist+Bench+%28Vowel+Recognition+-+Deterding+Data%29).
 
