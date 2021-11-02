@@ -9,13 +9,16 @@ The data consists of 15 speakers each pronouncing 11 vowels, six times each. The
 The data I used came from [here](http://archive.ics.uci.edu/ml/machine-learning-databases/undocumented/connectionist-bench/vowel/vowel-context.data).
 
 ## Running the Project
-The analysis, model selection and hyperparameters tuning are contained in the [jupyter notebook](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Mid-term%20Vowel%20Prediction%20Project.ipynb).
+The analysis, model selection and hyperparameters tuning are contained in the [jupyter notebook](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Mid-term%20Vowel%20Prediction%20Project.ipynb). These scripts are cleaned up as a python file here: [Mid-term Vowel Prediction Project.py](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Mid-term%20Vowel%20Prediction%20Project.py)
 
 The final model is exported to [vowel-model.bin](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/vowel-model.bin).
 
 The script to deploy the model using flask is contained in [predict_vowel.py](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/predict_vowel.py).
 
-[Pipfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Pipfile) and [Pipfile.lock](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Pipfile.lock) set up the pipenv environment. These can be called by Docker.
+[Pipfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Pipfile) and [Pipfile.lock](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Pipfile.lock) set up the pipenv environment. These can be called by Docker. The virtual environment can be activated by running
+```
+pipenv shell
+```
 
 [Dockerfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Dockerfile) contains the Docker instructions. There are two lines commented out, which should be uncommented if used for local deployment on port 9696. Currently it is set for remote deployment on Heroku, and so no port is set.
 
