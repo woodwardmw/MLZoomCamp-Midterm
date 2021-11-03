@@ -1,4 +1,11 @@
-# MLZoomCamp-Midterm
+# MLZoomCamp Midterm Project
+## Table of Contents
+ * [Introduction](#introduction)
+ * [Running the Project](#running-the-project)
+    * [Local deployment](#local-deployment)
+    * [Remote deployment on Heroku](#remote-deployment-on-heroku)
+ * [Accessing the Heroku app](#accessing-the-heroku-app)
+ * [One simple example to verify the Heroku app is working](#one-simple-example-to-verify-the-heroku-app-is-working)
 ## Introduction
 In phonetics, it is generally known that the resonant frequencies of the vocal tract of the speaker can be used to determine the quality of the vowel being spoken.
 
