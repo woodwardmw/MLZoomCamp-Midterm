@@ -81,22 +81,9 @@ to build the Docker file and push it up to my Heroku deployment.
 ## Accessing the Heroku app
 The deployed app can be accessed on Heroku at [https://zoomcamp-midterm-heroku.herokuapp.com/predict](https://zoomcamp-midterm-heroku.herokuapp.com/predict) with a test page at [https://zoomcamp-midterm-heroku.herokuapp.com/welcome](https://zoomcamp-midterm-heroku.herokuapp.com/welcome).
 
-The [jupyter notebook](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Mid-term%20Vowel%20Prediction%20Project.ipynb) contains the following code to send a POST request for one particular randomly chosen example to the Heroku app and receive a response:
-```
-# Pick a random example from the test set
-
-random_index = random.randint(0, df_test.shape[0] - 1)
-example = df_test.drop(['speaker', 'vowel'], axis=1).iloc[[random_index,]]
-example = example.to_dict()
-
-import requests
-url = 'https://zoomcamp-midterm-heroku.herokuapp.com/predict'
-response = requests.post(url, json=example)
-result = response.json()
-result
-```
+The simplest way to verify it is working is to run [predict_test.py](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/predict_test.py). This script takes a random example from the test data, and outputs the actual vowel, and the predicted vowel via the Heroku deployment.
 ## One simple example to verify the Heroku app is working
-If you haven't imported the data, and want to just run one example, here is one to run:
+Otherwise, if you want to just run one example, here is one to run:
 ```
 example = {'sex': {967: 1},
  'f0': {967: -3.325},
