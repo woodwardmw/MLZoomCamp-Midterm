@@ -17,7 +17,7 @@ import requests
 
 
 
-df = pd.read_csv('vowels_data.csv')
+df = pd.read_csv('data/vowels_data.csv')
 df
 
 def convert_to_vowel(vowel_int):
