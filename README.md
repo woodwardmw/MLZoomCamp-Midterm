@@ -72,11 +72,11 @@ In [predict_vowel.py](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main
 ```
 DEPLOY = 'heroku'
 ```
-Then
+Then I used
 ```
 git push heroku main
 ```
-will build the Docker file and push it up to Heroku.
+to build the Docker file and push it up to my Heroku deployment.
 
 ## Accessing the Heroku app
 The deployed app can be accessed on Heroku at [https://zoomcamp-midterm-heroku.herokuapp.com/predict](https://zoomcamp-midterm-heroku.herokuapp.com/predict) with a test page at [https://zoomcamp-midterm-heroku.herokuapp.com/welcome](https://zoomcamp-midterm-heroku.herokuapp.com/welcome).
