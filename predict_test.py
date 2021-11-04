@@ -27,12 +27,15 @@ df_test = df[df.speaker.isin([10, 11, 13, 14])]  # Two male and two female in df
 
 random_index = random.randint(0, df_test.shape[0] - 1)
 
-example = df_test.drop(['speaker', 'vowel'], axis=1).iloc[[random_index,]]
-example = example.to_dict()
-vowel_int = df_test.iloc[random_index]['vowel'].astype(int)
+example = df_test.iloc[[random_index,]]
+print(example)
+print(type(example))
+vowel_int = example.iloc[0]['vowel'].astype(int)
 print(f'Actual vowel: {convert_to_vowel(vowel_int)}')
 
+example_dict = example.to_dict()
+print(example_dict)
 url = 'https://zoomcamp-midterm-heroku.herokuapp.com/predict'
-response = requests.post(url, json=example)
+response = requests.post(url, json=example_dict)
 result = response.json()
 print(f'Predicted vowel: {result["Prediction"]}')
