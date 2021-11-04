@@ -82,6 +82,8 @@ to build the Docker file and push it up to my Heroku deployment.
 The deployed app can be accessed on Heroku at [https://zoomcamp-midterm-heroku.herokuapp.com/predict](https://zoomcamp-midterm-heroku.herokuapp.com/predict) with a test page at [https://zoomcamp-midterm-heroku.herokuapp.com/welcome](https://zoomcamp-midterm-heroku.herokuapp.com/welcome).
 
 The simplest way to verify it is working is to run [predict_test.py](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/predict_test.py). This script takes a random example from the test data, and outputs the actual vowel, and the predicted vowel via the Heroku deployment.
+
+[Accessing the Heroku app via predict_test.py](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/images/Screenshot_of_predict_script.png)
 ## One simple example to verify the Heroku app is working
 Otherwise, if you want to just run one example, here is one to run:
 ```
