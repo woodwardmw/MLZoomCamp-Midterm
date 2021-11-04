@@ -86,8 +86,6 @@ The [jupyter notebook](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/mai
 # Pick a random example from the test set
 
 random_index = random.randint(0, df_test.shape[0] - 1)
-random_index
-
 example = df_test.drop(['speaker', 'vowel'], axis=1).iloc[[random_index,]]
 example = example.to_dict()
 
