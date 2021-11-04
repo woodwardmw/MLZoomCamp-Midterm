@@ -1,6 +1,13 @@
-# MLZoomCamp-Midterm
+# MLZoomCamp Midterm Project
+## Table of Contents
+ * [Introduction](#introduction)
+ * [Running the Project](#running-the-project)
+    * [Local deployment](#local-deployment)
+    * [Remote deployment on Heroku](#remote-deployment-on-heroku)
+ * [Accessing the Heroku app](#accessing-the-heroku-app)
+ * [One simple example to verify the Heroku app is working](#one-simple-example-to-verify-the-heroku-app-is-working)
 ## Introduction
-In phonetics, it is generally known that the resonant frequencies of the vocal tract of the speaker can be used to determine the quality of the vowel being spoken. These resonant frequencies 
+In phonetics, it is generally known that the resonant frequencies of the vocal tract of the speaker can be used to determine the quality of the vowel being spoken.
 
 Here I have taken data of English speakers pronouncing eleven different vowels in their language. The data is taken from the [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Connectionist+Bench+%28Vowel+Recognition+-+Deterding+Data%29).
 
@@ -20,7 +27,7 @@ The script to deploy the model using flask is contained in [predict_vowel.py](ht
 pipenv shell
 ```
 
-[Dockerfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Dockerfile) contains the Docker instructions. There are two lines commented out, which should be uncommented if used for local deployment on port 9696. Currently it is set for remote deployment on Heroku, and so no port is set.
+[Dockerfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Dockerfile) contains the Docker instructions. Note that I deployed both locally and remotely on Heroku, and each required a slightly different Dockerfile. (Specifically Heroku requires that the port not be set). There are two lines commented out in the version of the Dockerfile in this repository, which should be uncommented if used for local deployment on port 9696. Currently it is set for remote deployment on Heroku, and so no port is set.
 
 ### Local deployment
 To deploy locally, uncomment the following two lines of [Dockerfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Dockerfile):
@@ -51,31 +58,34 @@ To run:
 sudo docker run -it --rm -p 9696:9696 zoomcamp-midterm:latest
 ```
 ### Remote deployment on Heroku
-To deploy on Heroku, comment out the following two lines of [Dockerfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Dockerfile):
+To deploy on Heroku, you can use the version of the [Dockerfile](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Dockerfile) in this repository, which has the following two lines commented out:
 ```
 #EXPOSE 9696  #(For local deployment)
 
 #ENTRYPOINT [ "gunicorn", "--bind=0.0.0.0:9696", "predict_vowel:app" ]  #(For local deployment)
 ```
-and uncomment:
+and this line instead:
 ```
 ENTRYPOINT [ "gunicorn", "predict_vowel:app" ]
 ```
-In [predict_vowel.py](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/predict_vowel.py) change the variable DEPLOY to equal 'heroku':
+In [predict_vowel.py](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/predict_vowel.py) ensure the variable DEPLOY is to equal 'heroku':
 ```
 DEPLOY = 'heroku'
 ```
-Then
+Then I used
 ```
 git push heroku main
 ```
-will build the Docker file and push it up to Heroku.
+to build the Docker file and push it up to my Heroku deployment.
 
 ## Accessing the Heroku app
 The deployed app can be accessed on Heroku at [https://zoomcamp-midterm-heroku.herokuapp.com/predict](https://zoomcamp-midterm-heroku.herokuapp.com/predict) with a test page at [https://zoomcamp-midterm-heroku.herokuapp.com/welcome](https://zoomcamp-midterm-heroku.herokuapp.com/welcome).
 
 The [jupyter notebook](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Mid-term%20Vowel%20Prediction%20Project.ipynb) contains the following code to send a POST request for one particular randomly chosen example to the Heroku app and receive a response:
 ```
+# Pick a random example from the test set
+
+random_index = random.randint(0, df_test.shape[0] - 1)
 example = df_test.drop(['speaker', 'vowel'], axis=1).iloc[[random_index,]]
 example = example.to_dict()
 
