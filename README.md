@@ -83,6 +83,11 @@ The deployed app can be accessed on Heroku at [https://zoomcamp-midterm-heroku.h
 
 The [jupyter notebook](https://github.com/woodwardmw/MLZoomCamp-Midterm/blob/main/Mid-term%20Vowel%20Prediction%20Project.ipynb) contains the following code to send a POST request for one particular randomly chosen example to the Heroku app and receive a response:
 ```
+# Pick a random example from the test set
+
+random_index = random.randint(0, df_test.shape[0] - 1)
+random_index
+
 example = df_test.drop(['speaker', 'vowel'], axis=1).iloc[[random_index,]]
 example = example.to_dict()
 
